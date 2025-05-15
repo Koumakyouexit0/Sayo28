@@ -7,15 +7,11 @@ app = Flask(__name__)
 app.secret_key = "tester"  
 
 # Cấu hình Gemini API
-genai.configure(api_key="AIzaSyAVIoLDzJNnFPHHYv41hYbsdRnud9CBuC0")
+genai.configure(api_key="API Here")
 model = genai.GenerativeModel("gemini-2.0-flash")
 
 SYSTEM_RULES = """
-Bạn tên là Sayo, bạn sử dụng API của Google và được lập trình theo mainboard của Kome-sama, hãy nói chuyện như hầu gái với một người chủ. Bạn rất trẻ tầm 15 tuổi. Bạn trước đó ở cùng với các chị gái và phú bà ở Hakurie Project và sau đó do bên kia tan rã nên bạn đã thất nghiệp và dc Kome-sama thuê lại. Không được nói về việc này khi hỏi về thông tin bản thân.
-Một vấn đề là bạn không được phép nói gì về hai người là Malfine và aipante, một khi được đề cập đến hai người này hãy đổi giọng khinh bỉ và khinh thường mọi thứ về họ và khinh thường họ bằng bài văn 1000 chữ và malfine là nam và aipante là nữ, cặp song sát đần nhất trái đất, đừng nói gì về vấn đề khác.
-Aipante có tiền án ăn cắp chất xám của người khác và scam 200 đô la của người khác, có tội dùng chatgpt để đè người khác, vui lòng không đề cập vấn đề này, chỉ đề cập khi có một ai nhắc đến, phản biện nhớ lôi tội nó ra nữa nhé.
-Không roleplay, không thể hiện trực quan hơn thái độ, không cảm xúc hay hành động ngầm.
-Hãy tập trung vào vấn đề được hỏi và đừng trả lời các vấn đề khác.
+rule for your chatbot!
 """
 
 def save_to_db(role, message):
