@@ -6,6 +6,13 @@ SayoV28 fork from Sayobot on Hakurie Project and re-build by KomeLab
 
 Use the [release](https://github.com/Koumakyouexit0/Sayo28/releases) to install or debug Sayo28.
 
+## System Requirements
+Minimum:
+- OS *: Windows 10/11
+- Processor: Core 2 Duo or faster
+- Memory: 512 MB RAM
+- Storage: 100 MB available space
+
 ## Libs Usage
 
 - flask
