@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sayobot28</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='peakpx.png') }}">
+</head>
+<body>
+  <div class="chat-container">
+    <button class="reset-btn" id="resetBtn" type="button">🗑 Clear</button>
+    <button class="newchat-btn" id="newChatBtn" type="button">＋ New Chat</button>
+    <div class="chat-window" id="chat">
+      {% for msg in chat_history %}
+        <div style="display: flex;">
+          {% if msg.role == 'bot' %}
+          <div class="msg-wrapper bot">
+            <div class="msg-header">Sayobot</div>
+            <div class="msg-body">{{ msg.text | safe }}</div>
+          </div>
+          <div class="msg-spacer"></div>
+          {% else %}
+          <div class="msg-spacer"></div>
+          <div class="msg-wrapper user">
+            <div class="msg-header">User</div>
+            <div class="msg-body">{{ msg.text | safe }}</div>
+          </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+    <form id="chatForm" class="chat-form" style="position: relative;">
+      <textarea name="prompt" rows="2" placeholder="Send a message..." required></textarea>
+      <button type="submit" class="send-btn" id="sendBtn" aria-label="Gửi">
+        &#10148;
+      </button>
+      <div class="search-note">Hãy cẩn thận trước thông tin mà Sayobot đưa ra!</div>
+      <button type="button" class="feature-btn" id="featureBtn">&#x22EE;</button>
+      <div class="feature-menu" id="featureMenu">
+        <div class="feature-item" id="aboutBtn">About</div>
+      </div>
+    </form>
+  </div>
+  <div class="status-box" id="statusBox">
+    <div id="netStatus">Your Network: <span class="dot offline"></span></div>
+    <div id="apiStatus">Sayobot28API: <span class="dot offline"></span></div>
+    <div id="webStatus">reopyService: <span class="dot offline"></span></div>
+  </div>
+  <div id="aboutModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" id="aboutClose">&times;</span>
+      <h2>About Me!</h2>
+      <img src="{{ url_for('static', filename='peakpx.png') }}" alt="Sayobot Avatar" style="width:300px;height:300px;display:block;margin:0 auto auto;object-fit:cover;">
+      <p>Sayobot v28 fork from Sayobot on <a href="https://hakurieprojectloved.web.app/" target="_blank" style="color: #e75480;">Hakurie Project</a> by <a href="https://reopykomeo.web.app/" target="_blank" style="color: #e75480;">reopykomeo!</a></p>
+      <p>GitHub: <a href="https://github.com/koumakyouexit0" target="_blank" style="color: #e75480;">Koumakyouexit0</a></p>
+      <p>Webpage: <a href="https://reopykomeo.web.app/" target="_blank" style="color: #e75480;">reopykomeo.web.app</a></p>
+    </div>
+  </div>
+  <div id="confirmModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" id="confirmClose">&times;</span>
+      <h2>Xác nhận</h2>
+      <p>Bạn có chắc chắn muốn xóa toàn bộ lịch sử chat?</p>
+      <div style="margin-top:16px; display:flex; gap:12px; justify-content: flex-end;">
+        <button id="confirmYes" class="feature-btn" style="background:#d9534f;color:#fff;">Xóa</button>
+        <button id="confirmNo" class="feature-btn">Hủy</button>
+      </div>
+    </div>
+  </div>
+  <div id="errorModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" id="errorClose">&times;</span>
+      <h2>Lỗi!</h2>
+      <p id="errorMsg">Không thể kết nối tới SayoAPI hoặc mạng. Vui lòng kiểm tra kết nối của bạn.</p>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>

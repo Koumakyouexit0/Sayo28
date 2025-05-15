@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>404 Not Found!</title>
+  <style>
+    body {
+      background: #23272f;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .notfound {
+      text-align: center;
+    }
+    .notfound h1 {
+      font-size: 64px;
+      margin-bottom: 16px;
+    }
+    .notfound p {
+      font-size: 20px;
+      color: #aaa;
+    }
+    .notfound .reason {
+      margin-top: 24px;
+      font-size: 16px;
+      color: #ffb347;
+    }
+    .notfound a {
+      color: #2f88ff;
+      text-decoration: none;
+      font-size: 16px;
+      margin-top: 24px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="notfound">
+    <h1>404</h1>
+    <p>Không tìm thấy trang bạn yêu cầu.</p>
+    <div class="reason">
+      Có thể trang đang được bảo trì, cập nhật, hoặc server đã tắt.<br>
+      Vui lòng thử lại sau!
+    </div>
+    <a href="{{ url_for('index') }}">Quay về trang chủ</a>
+  </div>
+</body>
+</html>
